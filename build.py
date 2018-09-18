@@ -11,17 +11,17 @@ if __name__ == '__main__':
     content = ''
     file = ''
     if (len(sys.argv) < 2):
-        exit('请输入SQL文件路径')
+        exit('no file')
 
     dir = sys.argv[1]
     try:
-        file = open(dir)
-    except IOError, e:
+        file = open(dir,'r',-1,'utf8')
+    except IOError as e:
         exit(e)
     try:
         content = file.read()
     except:
-        exit('文件读取失败')
+        exit('read file failed')
     finally:
         file.close()
 
@@ -40,17 +40,17 @@ if __name__ == '__main__':
     # 写文件
     file_obj = ''
     try:
-        file_obj = open(md_dir + file_name, 'w')
+        file_obj = open(md_dir + file_name, 'w',-1,'utf8')
     except:
-        exit('文件创建失败')
+        exit('file create failed')
 
     try:
         file_obj.write(text)
     except:
-        exit('文件写入失败')
+        exit('file write failed')
     finally:
         file_obj.close()
 
-    print '数据库文档已经成功创建,文件在md目录下.'
+    print ('success.')
 
 
